@@ -68,13 +68,14 @@
     </a>
 
     <!-- Cart -->
-    <a href="cart.html" title="Shopping Cart">
+    <a href="cart.html" title="Shopping Cart" style="position: relative;">
       <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke="black" stroke-width="1.5">
         <path d="M7 4h-2l-3 9v2h2l3.6 7.59 
                  1.4-1.59h7.8l1.4 1.59L20 
                  15h2v-2l-3-9h-2l-1.6 4H8.6L7 4zm1 
                  6h8l1.25 3H6.75L8 10z"/>
       </svg>
+      <span id="cart-badge" style="position: absolute; top: -8px; right: -8px; background: crimson; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; display: none;">0</span>
     </a>
 
     <!-- Profile -->
@@ -322,10 +323,12 @@
     </div>
   </div>
   <div class="footer-bottom">
-    &copy; <span id="year"></span> JerseyStore | Made with ❤️ by Najmuddin Ahmad 
+    &copy; <span id="year"></span> JerseyStore | Made with ❤️ by Najmuddin Ahmad || Maaz Ahmad
   </div>
 </footer>
 
+<script src="carousel.js"></script>
+<script src="cart.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
