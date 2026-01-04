@@ -99,7 +99,8 @@ nav {
 }
 
 .dropdown-content a:hover {
-  background-color: #222; 
+  background-color: #f0f0f0;
+  color: black;
 }
 
 .dropdown:hover .dropdown-content {
@@ -149,11 +150,8 @@ nav {
 
 
 .whats-hot {
-  font-family: var(--heading-section-mbs-onlight-typography-heading-family);
-  font-size: var(--heading-section-mbs-onlight-typography-heading-size);
   text-transform: uppercase;
   font-size: 2rem;
-  /* text-align: center; */
   margin-left: 80px;
   margin-top: 2rem; 
   margin-bottom: 1.5rem; 
@@ -214,22 +212,12 @@ nav {
   font-weight: bold;
 }
 
-.section-heading{
-    font-family: var(--heading-section-mbs-onlight-typography-heading-family);
-  font-size: var(--heading-section-mbs-onlight-typography-heading-size);
+.section-heading {
   text-transform: uppercase;
   font-size: 2rem;
-
-  /* text-align: center; */
-
   margin-left: 80px;
   margin-top: 2rem; 
   margin-bottom: 1.5rem;
-}
-
-.video-container {
-  position: relative;
-  display: inline-block;
 }
 
 .video-title {
