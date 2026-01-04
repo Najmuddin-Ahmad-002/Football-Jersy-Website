@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wishlist - JerseyStore</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .wishlist-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    min-height: 60vh;
+  }
+  
+  .wishlist-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .wishlist-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .wishlist-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .wishlist-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  .remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+  .remove-btn:hover {
+    background-color: #ff0000;
+    color: white;
+  }
+  
+  .wishlist-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    background-color: #f5f5f5;
+  }
+  
+  .wishlist-info {
+    padding: 1rem;
+  }
+  
+  .wishlist-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .wishlist-price {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #333;
+  }
+  
+  .empty-wishlist {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .empty-wishlist svg {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+  }
+  
+  .empty-wishlist h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .continue-shopping-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .continue-shopping-btn:hover {
+    background-color: #333;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .notification {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .wishlist-item.removing {
+    animation: fadeOut 0.3s ease-out forwards;
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
+      <path d="M12 0L15.09 8H24L17.45 12.9L20.54 20.9L12 16L3.46 20.9L6.55 12.9L0 8H8.91L12 0Z"/>
+    </svg>
+    <span>JerseyStore</span>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search jerseys...">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <circle cx="10" cy="10" r="7" fill="none" stroke="black" stroke-width="2"/>
+      <line x1="15" y1="15" x2="21" y2="21" stroke="black" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div class="nav-links">
+    <div class="dropdown">
+      <button class="dropbtn">Club Jerseys</button>
+      <div class="dropdown-content">
+        <a href="real-madrid.html">Real Madrid</a>
+        <a href="manchester-united.html">Manchester United</a>
+        <a href="barcelona.html">FC Barcelona</a>
+        <a href="juventus.html">Juventus</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">International Jerseys</button>
+      <div class="dropdown-content">
+        <a href="brazil.html">Brazil</a>
+        <a href="argentina.html">Argentina</a>
+        <a href="france.html">France</a>
+        <a href="germany.html">Germany</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="icons">
+    <a href="wishlist.html" title="Wishlist">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.13 2.44h.74C14.09 5.01 15.76 4 17.5 4 20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
+      </svg>
+    </a>
+
+    <a href="cart.html" title="Shopping Cart">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke="black" stroke-width="1.5">
+        <path d="M7 4h-2l-3 9v2h2l3.6 7.59 1.4-1.59h7.8l1.4 1.59L20 15h2v-2l-3-9h-2l-1.6 4H8.6L7 4zm1 6h8l1.25 3H6.75L8 10z"/>
+      </svg>
+    </a>
+
+    <a href="profile.html" title="Profile">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24">
+        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<div class="wishlist-container">
+  <div class="wishlist-header">
+    <h1>My Wishlist</h1>
+    <p id="wishlist-count">Loading...</p>
+  </div>
+
+  <div class="wishlist-grid" id="wishlist-grid">
+    <!-- Items will be loaded from localStorage -->
+  </div>
+
+  <div class="empty-wishlist hidden" id="empty-wishlist">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.13 2.44h.74C14.09 5.01 15.76 4 17.5 4 20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
+    </svg>
+    <h2>Your wishlist is empty</h2>
+    <p>Start adding your favorite jerseys!</p>
+    <a href="shop.html" class="continue-shopping-btn">Continue Shopping</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">JerseyStore</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="kits.html">Kits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; <span id="year"></span> JerseyStore | Made with ❤️ by Najmuddin Ahmad || Maaz Ahmad
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Update footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    const wishlistGrid = document.getElementById('wishlist-grid');
+    const emptyWishlist = document.getElementById('empty-wishlist');
+    const wishlistCount = document.getElementById('wishlist-count');
+    
+    // Get wishlist from localStorage
+    let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    
+    // Function to show notification
+    function showNotification(message, type = 'success') {
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = message;
+      if (type === 'success') {
+        notification.style.backgroundColor = '#4CAF50';
+      } else if (type === 'info') {
+        notification.style.backgroundColor = '#2196F3';
+      }
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.remove();
+      }, 2000);
+    }
+    
+    // Function to render wishlist
+    function renderWishlist() {
+      wishlistGrid.innerHTML = '';
+      
+      if (wishlist.length === 0) {
+        wishlistGrid.classList.add('hidden');
+        emptyWishlist.classList.remove('hidden');
+        wishlistCount.textContent = 'Your wishlist is empty';
+        return;
+      }
+      
+      wishlistGrid.classList.remove('hidden');
+      emptyWishlist.classList.add('hidden');
+      wishlistCount.textContent = `${wishlist.length} ${wishlist.length === 1 ? 'item' : 'items'} in your wishlist`;
+      
+      wishlist.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'wishlist-item';
+        itemDiv.dataset.index = index;
+        itemDiv.innerHTML = `
+          <button class="remove-btn">✕</button>
+          <img src="${item.image || './view/mad.jpeg'}" alt="${item.name}" class="wishlist-image">
+          <div class="wishlist-info">
+            <div class="wishlist-name">${item.name}</div>
+            <div class="wishlist-price">₹${item.price.toFixed(0)}</div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        `;
+        
+        // Remove button event
+        itemDiv.querySelector('.remove-btn').addEventListener('click', function() {
+          itemDiv.classList.add('removing');
+          setTimeout(() => {
+            wishlist.splice(index, 1);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            renderWishlist();
+            showNotification(`${item.name} removed from wishlist`);
+          }, 300);
+        });
+        
+        // Add to cart button event
+        itemDiv.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+          let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+          const existingItem = cart.find(cartItem => cartItem.name === item.name);
+          
+          if (existingItem) {
+            existingItem.quantity += 1;
+            showNotification(`${item.name} quantity updated in cart`, 'info');
+          } else {
+            cart.push({
+              name: item.name,
+              price: item.price,
+              quantity: 1,
+              image: item.image
+            });
+            showNotification(`${item.name} added to cart!`, 'success');
+          }
+          
+          localStorage.setItem('cart', JSON.stringify(cart));
+        });
+        
+        wishlistGrid.appendChild(itemDiv);
+      });
+    }
+    
+    // Initialize
+    renderWishlist();
+  });
+</script>
+
+</body>
+</html>

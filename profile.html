@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - JerseyStore</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .profile-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
+  
+  .profile-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .tab {
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+  
+  .tab.active {
+    border-bottom-color: black;
+    font-weight: bold;
+  }
+  
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  .login-form, .signup-form {
+    max-width: 450px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #333;
+  }
+  
+  .form-footer {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .social-login {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
+  }
+  
+  .social-login p {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .social-btns {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-btn {
+    flex: 1;
+    padding: 0.8rem;
+    border: 2px solid black;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+  
+  .social-btn:hover {
+    background-color: black;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
+      <path d="M12 0L15.09 8H24L17.45 12.9L20.54 20.9L12 16L3.46 20.9L6.55 12.9L0 8H8.91L12 0Z"/>
+    </svg>
+    <span>JerseyStore</span>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search jerseys...">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <circle cx="10" cy="10" r="7" fill="none" stroke="black" stroke-width="2"/>
+      <line x1="15" y1="15" x2="21" y2="21" stroke="black" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div class="nav-links">
+    <div class="dropdown">
+      <button class="dropbtn">Club Jerseys</button>
+      <div class="dropdown-content">
+        <a href="real-madrid.html">Real Madrid</a>
+        <a href="manchester-united.html">Manchester United</a>
+        <a href="barcelona.html">FC Barcelona</a>
+        <a href="juventus.html">Juventus</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">International Jerseys</button>
+      <div class="dropdown-content">
+        <a href="brazil.html">Brazil</a>
+        <a href="argentina.html">Argentina</a>
+        <a href="france.html">France</a>
+        <a href="germany.html">Germany</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="icons">
+    <a href="wishlist.html" title="Wishlist">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.13 2.44h.74C14.09 5.01 15.76 4 17.5 4 20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
+      </svg>
+    </a>
+
+    <a href="cart.html" title="Shopping Cart">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke="black" stroke-width="1.5">
+        <path d="M7 4h-2l-3 9v2h2l3.6 7.59 1.4-1.59h7.8l1.4 1.59L20 15h2v-2l-3-9h-2l-1.6 4H8.6L7 4zm1 6h8l1.25 3H6.75L8 10z"/>
+      </svg>
+    </a>
+
+    <a href="profile.html" title="Profile">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24">
+        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<div class="profile-container">
+  <div class="profile-header">
+    <h1>My Account</h1>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('login')">Login</button>
+    <button class="tab" onclick="showTab('signup')">Sign Up</button>
+  </div>
+
+  <div id="login" class="tab-content active">
+    <div class="login-form">
+      <h2 style="margin-bottom: 1.5rem; text-align: center;">Welcome Back!</h2>
+      <form>
+        <div class="form-group">
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" required>
+        </div>
+
+        <button type="submit" class="submit-btn">Login</button>
+
+        <div class="form-footer">
+          <a href="#" style="color: #666; text-decoration: none;">Forgot Password?</a>
+        </div>
+
+        <div class="social-login">
+          <p>Or login with</p>
+          <div class="social-btns">
+            <button class="social-btn" type="button">Google</button>
+            <button class="social-btn" type="button">Facebook</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="signup" class="tab-content">
+    <div class="signup-form">
+      <h2 style="margin-bottom: 1.5rem; text-align: center;">Create Account</h2>
+      <form>
+        <div class="form-group">
+          <label for="signup-name">Full Name</label>
+          <input type="text" id="signup-name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-email">Email Address</label>
+          <input type="email" id="signup-email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" name="password" required>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-confirm">Confirm Password</label>
+          <input type="password" id="signup-confirm" name="confirm" required>
+        </div>
+
+        <button type="submit" class="submit-btn">Sign Up</button>
+
+        <div class="social-login">
+          <p>Or sign up with</p>
+          <div class="social-btns">
+            <button class="social-btn" type="button">Google</button>
+            <button class="social-btn" type="button">Facebook</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(tabName) {
+  const tabs = document.querySelectorAll('.tab');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabs.forEach(tab => tab.classList.remove('active'));
+  tabContents.forEach(content => content.classList.remove('active'));
+  
+  event.target.classList.add('active');
+  document.getElementById(tabName).classList.add('active');
+}
+</script>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">JerseyStore</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="kits.html">Kits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 JerseyStore | Made with ❤️ by Najmuddin Ahmad || Maaz Ahmad
+  </div>
+</footer>
+
+</body>
+</html>

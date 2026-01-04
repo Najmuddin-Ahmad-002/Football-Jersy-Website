@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argentina National Team - JerseyStore</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .team-hero {
+    background: linear-gradient(135deg, #74ACDF 0%, #FFFFFF 50%, #74ACDF 100%);
+    color: #0033A0;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  .team-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .products-section {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    background-color: #f5f5f5;
+  }
+  
+  .product-info {
+    padding: 1rem;
+  }
+  
+  .product-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background-color: #74ACDF;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-price {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #74ACDF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #5a8fc7;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
+      <path d="M12 0L15.09 8H24L17.45 12.9L20.54 20.9L12 16L3.46 20.9L6.55 12.9L0 8H8.91L12 0Z"/>
+    </svg>
+    <span>JerseyStore</span>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search jerseys...">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <circle cx="10" cy="10" r="7" fill="none" stroke="black" stroke-width="2"/>
+      <line x1="15" y1="15" x2="21" y2="21" stroke="black" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div class="nav-links">
+    <div class="dropdown">
+      <button class="dropbtn">Club Jerseys</button>
+      <div class="dropdown-content">
+        <a href="real-madrid.html">Real Madrid</a>
+        <a href="manchester-united.html">Manchester United</a>
+        <a href="barcelona.html">FC Barcelona</a>
+        <a href="juventus.html">Juventus</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">International Jerseys</button>
+      <div class="dropdown-content">
+        <a href="brazil.html">Brazil</a>
+        <a href="argentina.html">Argentina</a>
+        <a href="france.html">France</a>
+        <a href="germany.html">Germany</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="icons">
+    <a href="wishlist.html" title="Wishlist">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.13 2.44h.74C14.09 5.01 15.76 4 17.5 4 20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="black" stroke-width="2"/>
+      </svg>
+    </a>
+
+    <a href="cart.html" title="Shopping Cart">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke="black" stroke-width="1.5">
+        <path d="M7 4h-2l-3 9v2h2l3.6 7.59 1.4-1.59h7.8l1.4 1.59L20 15h2v-2l-3-9h-2l-1.6 4H8.6L7 4zm1 6h8l1.25 3H6.75L8 10z"/>
+      </svg>
+    </a>
+
+    <a href="profile.html" title="Profile">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24">
+        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<div class="team-hero">
+  <h1>Argentina National Team</h1>
+  <p>Albiceleste Pride - Official Argentina Jerseys</p>
+</div>
+
+<div class="products-section">
+  <h2 class="section-title">Argentina Collection</h2>
+  
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="./view/dih.jpeg" alt="Argentina Home Jersey" class="product-image">
+      <div class="product-info">
+        <span class="product-badge">POPULAR</span>
+        <div class="product-name">Argentina Home Jersey 2024</div>
+        <div class="product-price">$79.99</div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="./view/dih.jpeg" alt="Argentina Away Jersey" class="product-image">
+      <div class="product-info">
+        <span class="product-badge">NEW</span>
+        <div class="product-name">Argentina Away Jersey 2024</div>
+        <div class="product-price">$79.99</div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="./view/ag.jpeg" alt="Argentina Retro" class="product-image">
+      <div class="product-info">
+        <span class="product-badge">RETRO</span>
+        <div class="product-name">Argentina Retro Jersey 1998</div>
+        <div class="product-price">$74.99</div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="./view/dih.jpeg" alt="Argentina Kit" class="product-image">
+      <div class="product-info">
+        <span class="product-badge">KIT</span>
+        <div class="product-name">Argentina Home Complete Kit 2024</div>
+        <div class="product-price">$139.99</div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">JerseyStore</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="kits.html">Kits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; <span id="year"></span> JerseyStore | Made with ❤️ by Najmuddin Ahmad || Maaz Ahmad
+  </div>
+</footer>
+
+<style>
+  .notification {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      setTimeout(() => notification.remove(), 2000);
+    }
+    
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const card = this.closest('.product-card');
+        const productName = card.querySelector('.product-name').textContent;
+        const productPrice = parseFloat(card.querySelector('.product-price').textContent.replace('₹', '').replace(',', ''));
+        const productImage = card.querySelector('.product-image').src;
+        
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const existingItem = cart.find(item => item.name === productName);
+        
+        if (existingItem) {
+          existingItem.quantity += 1;
+          showNotification(`✓ ${productName} quantity updated!`);
+        } else {
+          cart.push({ name: productName, price: productPrice, quantity: 1, image: productImage });
+          showNotification(`✓ ${productName} added to cart!`);
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
